@@ -94,3 +94,4 @@ ORDER BY f.name
 -- |fk_osoby__miasta             |osoby                 |id_miasta              |miasta               |id_miasta             |
 -- |FK_WARTOSCI_CECHY__CECHY     |WARTOSCI_CECH         |id_CECHY               |CECHY                |id_CECHY              |
 -- +-----------------------------+----------------------+-----------------------+---------------------+----------------------+
+
