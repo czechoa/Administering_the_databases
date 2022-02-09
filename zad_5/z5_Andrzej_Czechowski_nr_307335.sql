@@ -14,7 +14,7 @@ IF NOT EXISTS
 GO
 
 ALTER PROCEDURE dbo.REMOVE_COLUMN(@db nvarchar(100), @table nvarchar(100), @col nvarchar(100)) AS
-    declare @exec_procedure nvarchar(4000) /* aby moc użyc use @db, uzyłem zmiennej gdzie zapisze kod procedury */
+declare @exec_procedure nvarchar(4000) /* aby moc użyc use @db, uzyłem zmiennej gdzie zapisze kod procedury */
 
     set @exec_procedure = 'use [' + @db + '];
 IF EXISTS
@@ -22,7 +22,7 @@ IF EXISTS
      from sys.objects t /* łaczenie tabel przez obejct id oraz columny, index id*/
               inner join sys.columns col
                          on t.object_id = col.object_id
-     where t.name = ''' +@table+''' and col.name = '''+@col+'''
+     where t.name = ''' + @table + ''' and col.name = ''' + @col + '''
     )
     BEGIN
         declare @constraint nvarchar(100),
@@ -37,19 +37,19 @@ IF EXISTS
                  JOIN sys.columns columns
                       ON columns.object_id = obj_table.object_id
                           AND columns.column_id = constraints.colid
-        WHERE obj_table.NAME = ''' +@table + '''
+        WHERE obj_table.NAME = ''' + @table + '''
 
         IF @constraint IS NOT NULL /*  sprawdzamy czy są pewne ograniczenia (np DEFAULT był założony)*/
             BEGIN /* Jak TAK - usuwamy ograniczenia */
                 select @constraint
-                set @sql = '' alter table '' + ''' +@table+''' +
+                set @sql = '' alter table '' + ''' + @table + ''' +
                            N'' drop constraint '' + @constraint
                 -- wykonanie polecenia
                 EXEC sp_sqlexec @sql
             END
         /* usuwanie kolumny */
-        set @sql = '' alter table '' + '''+ @table +'''+
-                   N'' drop column '' +'''+ @col + '''
+        set @sql = '' alter table '' + ''' + @table + '''+
+                   N'' drop column '' +''' + @col + '''
 
         -- wykonanie polecenia
         EXEC sp_sqlexec @sql
@@ -70,10 +70,10 @@ CREATE TABLE dbo.test_us_kol
 )
 go
 
-INSERT INTO test_us_kol ([id],nie_wazne)
-VALUES (N'ala','nie')
-INSERT INTO test_us_kol ([id],nie_wazne, czy_wazny)
-VALUES (N'kot','nie', 1)
+INSERT INTO test_us_kol ([id], nie_wazne)
+VALUES (N'ala', 'nie')
+INSERT INTO test_us_kol ([id], nie_wazne, czy_wazny)
+VALUES (N'kot', 'nie', 1)
 
 select *
 from test_us_kol;
