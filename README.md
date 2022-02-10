@@ -29,6 +29,6 @@ Creating indexes to foreign keys (for the relationship MASTER -> DETAIL)
 Procedure for deleting a restricted column
 ---------
 1. We check if the column exists
-1.1. As there is, we check if there are certain limitations (e.g. DEFAULT was founded)
-1.2 How YES - we remove restrictions
-1.3. We remove the columns
+2. As there is, we check if there are certain limitations (e.g. DEFAULT was founded)
+3. How YES - we remove restrictions
+4. We remove the columns
