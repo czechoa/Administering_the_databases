@@ -1,4 +1,4 @@
-# administering_the_databases
+# ASdministering_the_databases
 Common tasks in ms SQL databaase
 
 Taks
