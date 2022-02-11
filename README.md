@@ -1,5 +1,6 @@
 # Administering_the_databases
-Common tasks in ms SQL databaase
+This is an Applied Computer Science course at the Warsaw University of Technology. 
+
 
 Taks
 ===========
