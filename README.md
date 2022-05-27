@@ -2,7 +2,7 @@
 This is an Applied Computer Science course at the Warsaw University of Technology. 
 
 
-Taks
+Tasks
 ===========
 
 1.Foreign keys
